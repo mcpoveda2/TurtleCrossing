@@ -16,8 +16,22 @@ screen.onkey(fun = player.move_up,key = "Up")
 screen.onkey(fun = player.move_down,key = "Down")
 
 game_is_on = True
+cont = 0
 while game_is_on:
     time.sleep(0.1)
     screen.update()
-    carManager.createCar()
+    cont +=1
     carManager.moveCar()
+
+    ##Collision
+
+    for car in carManager.list_cars:
+        if(car.distance(player)<20):
+            game_is_on = False
+
+    if(cont==6):
+        carManager.createCar()
+        cont=0
+
+time.sleep(1000)
+
