@@ -15,18 +15,19 @@ class CarManager():
         self.createCar()
 
     def createCar(self):
-
-        car = Turtle("square")
-        car.penup()
-        color = random.choice(COLORS)
-        car.color(color)
-        car.shapesize(stretch_wid=1, stretch_len=2)
-        y_pos = random.randint(-250, 250)
-        car.goto(320, y_pos)
-        self.list_cars.append(car)
+        random_chance = random.randint(1,6)
+        if(random_chance == 1):
+            car = Turtle("square")
+            car.penup()
+            color = random.choice(COLORS)
+            car.color(color)
+            car.shapesize(stretch_wid=1, stretch_len=2)
+            y_pos = random.randint(-250, 250)
+            car.goto(320, y_pos)
+            self.list_cars.append(car)
 
     def moveCar(self):
         for car in self.list_cars:
-            car.goto(car.xcor()-MOVE_INCREMENT,car.ycor())
+            car.goto(car.xcor()-STARTING_MOVE_DISTANCE,car.ycor())
 
 
