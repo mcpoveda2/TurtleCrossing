@@ -10,6 +10,7 @@ class CarManager():
     def __init__(self):
         super().__init__()
         self.list_cars = []
+        self.speed = STARTING_MOVE_DISTANCE
 
     def add_car(self):
         self.createCar()
@@ -28,6 +29,10 @@ class CarManager():
 
     def moveCar(self):
         for car in self.list_cars:
-            car.goto(car.xcor()-STARTING_MOVE_DISTANCE,car.ycor())
+            car.backward(self.speed)
 
+    def winLevel(self):
+        self.list_cars.clear()
 
+    def level_up(self):
+        self.speed += MOVE_INCREMENT
